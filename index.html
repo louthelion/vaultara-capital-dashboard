@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vaultara Capital Dashboard</title>
+  <style>
+    :root{
+      --bg:#000000;
+      --panel:#08090c;
+      --blue:#3b82f6;
+      --lightgray:#c7cdd6;
+      --softgray:#9aa4b2;
+      --white:#ffffff;
+      --line:#1c2430;
+      --shadow:0 0 0 1px rgba(255,255,255,0.03), 0 10px 28px rgba(0,0,0,.35);
+      --radius:18px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--white);
+      font-family:Georgia, "Times New Roman", serif;
+    }
+
+    .wrap{
+      max-width:1120px;
+      margin:0 auto;
+      padding:20px 16px 80px;
+    }
+
+    .mini-brand{
+      font-size:28px;
+      color:var(--lightgray);
+      margin-bottom:8px;
+      letter-spacing:.5px;
+    }
+
+    .main-title{
+      margin:0 0 8px;
+      color:var(--blue);
+      font-size:54px;
+      line-height:1;
+      font-weight:700;
+    }
+
+    .sub-title{
+      margin:0 0 20px;
+      color:var(--lightgray);
+      font-size:28px;
+      font-weight:700;
+    }
+
+    .top-box{
+      background:var(--panel);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:18px;
+      box-shadow:var(--shadow);
+      margin-bottom:30px;
+    }
+
+    .label{
+      color:var(--blue);
+      font-size:22px;
+      font-weight:700;
+      margin:10px 0 4px;
+    }
+
+    .value{
+      color:var(--lightgray);
+      font-size:22px;
+      margin:0 0 4px;
+    }
+
+    .section{
+      margin-top:34px;
+    }
+
+    .section-title{
+      color:var(--blue);
+      font-size:42px;
+      margin:0 0 10px;
+      font-weight:700;
+    }
+
+    .section-note{
+      color:var(--lightgray);
+      font-size:21px;
+      margin:0 0 16px;
+      font-weight:700;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+      gap:16px;
+    }
+
+    .card{
+      background:var(--panel);
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:18px;
+      box-shadow:var(--shadow);
+    }
+
+    .card-title{
+      font-size:30px;
+      color:var(--lightgray);
+      margin:0 0 8px;
+      font-weight:700;
+    }
+
+    .card-desc{
+      font-size:20px;
+      color:var(--white);
+      margin:0 0 16px;
+    }
+
+    .mini-links{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+      gap:10px;
+    }
+
+    .mini-link{
+      display:block;
+      text-decoration:none;
+      background:#0f1319;
+      color:var(--blue);
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:14px;
+      font-size:18px;
+      font-weight:700;
+      text-align:center;
+      transition:.18s ease;
+    }
+
+    .mini-link:hover{
+      background:var(--lightgray);
+      color:#000;
+    }
+
+    .flow-box{
+      background:var(--panel);
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:18px;
+      box-shadow:var(--shadow);
+    }
+
+    .flow-step{
+      color:var(--white);
+      font-size:21px;
+      margin:0 0 12px;
+    }
+
+    .flow-step strong{
+      color:var(--blue);
+    }
+
+    .footer-space{
+      height:30px;
+    }
+
+    @media (max-width:860px){
+      .grid{grid-template-columns:1fr}
+    }
+
+    @media (max-width:640px){
+      .main-title{font-size:38px}
+      .sub-title{font-size:21px}
+      .section-title{font-size:32px}
+      .section-note{font-size:18px}
+      .card-title{font-size:24px}
+      .card-desc,.flow-step{font-size:18px}
+      .label,.value{font-size:19px}
+      .mini-links{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="mini-brand">VCAP</div>
+    <h1 class="main-title">Vaultara Capital Dashboard</h1>
+    <div class="sub-title">Funding • Capital • Investor • Institution Operations</div>
+
+    <div class="top-box">
+      <div class="label">System Time</div>
+      <div class="value" id="currentDate">Mon, Mar 23, 2026</div>
+      <div class="value" id="currentTime">08:00:00</div>
+
+      <div class="label">Mode</div>
+      <div class="value">Vaultara Capital</div>
+
+      <div class="label">Status</div>
+      <div class="value">Active</div>
+
+      <div class="label">Purpose</div>
+      <div class="value">Vaultara Capital handles funding, capital, lender, investor, institution, and credit workflow before everything is prepared and sent to TitanCore Holdings for parent-company review.</div>
+    </div>
+
+    <section class="section">
+      <h2 class="section-title">Company Management</h2>
+      <div class="section-note">Vaultara company leadership reviews, approves, organizes, and forwards clean work upward.</div>
+      <div class="grid">
+        <div class="card">
+          <div class="card-title">Manager</div>
+          <div class="card-desc">Final company review, approvals, signatures, and direction before work moves to TitanCore Holdings.</div>
+          <div class="mini-links">
+            <a class="mini-link" href="vaultara-manager.html">Open Manager Dashboard</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Assistant Manager</div>
+          <div class="card-desc">Support review, workflow checking, issue follow-up, and correction routing.</div>
+          <div class="mini-links">
+            <a class="mini-link" href="vaultara-assistant-manager.html">Open Assistant Manager Dashboard</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Administrator</div>
+          <div class="card-desc">Logging, filing, routing, records, and report package preparation.</div>
+          <div class="mini-links">
+            <a class="mini-link" href="vaultara-administrator.html">Open Administrator Dashboard</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">Core Work</h2>
+      <div class="section-note">This is the main company work layer for Vaultara before it moves upward.</div>
+      <div class="grid">
+        <div class="card">
+          <div class="card-title">Inbox</div>
+          <div class="card-desc">Company intake, client messages, lender requests, and routed communications.</div>
+          <div class="mini-links">
+            <a class="mini-link" href="vaultara-inbox.html">Open Inbox</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Approval</div>
+          <div class="card-desc">Approvals, internal review, and authorization flow for funding and capital work.</div>
+          <div class="mini-links">
+            <a class="mini-link" href="vaultara-approval.html">Open Approval</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Meeting</div>
+          <div class="card-desc">Meetings, capital review sessions, planning, and company scheduling.</div>
+          <div class="mini-links">
+            <a class="mini-link" href="vaultara-meeting.html">Open Meeting</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Signature</div>
+          <div class="card-desc">Documents waiting for sign, final review, or return for correction.</div>
+          <div class="mini-links">
+            <a class="mini-link" href="vaultara-signature.html">Open Signature</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Contracts</div>
+          <div class="card-desc">Funding, lender, and institution contracts move through departments first, then to company leadership for final sign routing.</div>
+          <div class="mini-links">
+            <a class="mini-link" href="vaultara-contracts.html">Open Contracts</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Projects</div>
+          <div class="card-desc">Client funding projects, capital packages, corrections, and company workflow.</div>
+          <div class="mini-links">
+            <a class="mini-link" href="vaultara-projects.html">Open Projects</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">Capital Channels</h2>
+      <div class="section-note">These are the major business lanes inside Vaultara Capital.</div>
+      <div class="grid">
+        <div class="card">
+          <div class="card-title">Funding</div>
+          <div class="card-desc">Funding workflow, applications, intake, and package preparation.</div>
+          <div class="mini-links">
+            <a class="mini-link" href="vaultara-funding.html">Open Funding</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Credit</div>
+          <div class="card-desc">Credit files, review, internal process, and correction handling.</div>
+          <div class="mini-links">
+            <a class="mini-link" href="vaultara-credit.html">Open Credit</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Investor</div>
+          <div class="card-desc">Investor workflow, outreach, internal packages, and reporting preparation.</div>
+          <div class="mini-links">
+            <a class="mini-link" href="vaultara-investor.html">Open Investor</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Institution</div>
+          <div class="card-desc">Institution workflow, compliance preparation, review, and routing.</div>
+          <div class="mini-links">
+            <a class="mini-link" href="vaultara-institution.html">Open Institution</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Capital</div>
+          <div class="card-desc">Capital files, structuring, and internal review handling.</div>
+          <div class="mini-links">
+            <a class="mini-link" href="vaultara-capital.html">Open Capital</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Lender</div>
+          <div class="card-desc">Lender workflow, package review, and relationship tracking.</div>
+          <div class="mini-links">
+            <a class="mini-link" href="vaultara-lender.html">Open Lender</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">Financial & Reporting</h2>
+      <div class="section-note">Company financial work and report packages are organized here before TitanCore Holdings review.</div>
+      <div class="grid">
+        <div class="card">
+          <div class="card-title">Financial</div>
+          <div class="card-desc">Financial review, capital tracking, expenses, and internal package building.</div>
+          <div class="mini-links">
+            <a class="mini-link" href="vaultara-financial.html">Open Financial</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Monthly Reports</div>
+          <div class="card-desc">Monthly company report package for funding, capital, and review activity.</div>
+          <div class="mini-links">
+            <a class="mini-link" href="vaultara-report-monthly.html">Open Monthly Reports</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Quarterly Reports</div>
+          <div class="card-desc">Every 3 months, organized report package for company review and upward submission.</div>
+          <div class="mini-links">
+            <a class="mini-link" href="vaultara-report-quarterly.html">Open Quarterly Reports</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Year-End Reports</div>
+          <div class="card-desc">Final annual reporting, archives, and complete company summary package.</div>
+          <div class="mini-links">
+            <a class="mini-link" href="vaultara-report-yearend.html">Open Year-End Reports</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">Departments</h2>
+      <div class="section-note">All work should be cleaned by departments first before Vaultara company management does final company review.</div>
+      <div class="grid">
+        <div class="card">
+          <div class="card-title">Finance Department</div>
+          <div class="card-desc">Manager • Assistant Manager • Administrator</div>
+          <div class="mini-links">
+            <a class="mini-link" href="vaultara-finance.html">Open Finance</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Operations Department</div>
+          <div class="card-desc">Manager • Assistant Manager • Administrator</div>
+          <div class="mini-links">
+            <a class="mini-link" href="vaultara-operations.html">Open Operations</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Legal Department</div>
+          <div class="card-desc">Manager • Assistant Manager • Administrator</div>
+          <div class="mini-links">
+            <a class="mini-link" href="vaultara-legal.html">Open Legal</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Technology Department</div>
+          <div class="card-desc">Manager • Assistant Manager • Administrator</div>
+          <div class="mini-links">
+            <a class="mini-link" href="vaultara-technology.html">Open Technology</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Communications Department</div>
+          <div class="card-desc">Manager • Assistant Manager • Administrator</div>
+          <div class="mini-links">
+            <a class="mini-link" href="vaultara-communications.html">Open Communications</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Security Department</div>
+          <div class="card-desc">Manager • Assistant Manager • Administrator</div>
+          <div class="mini-links">
+            <a class="mini-link" href="vaultara-security.html">Open Security</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">Reporting Flow</h2>
+      <div class="flow-box">
+        <p class="flow-step"><strong>Monday:</strong> Vaultara Capital prepares company reports, funding issues, approvals, financial items, contracts, and updates.</p>
+        <p class="flow-step"><strong>Monday end of day:</strong> Vaultara sends the clean package to TitanCore Holdings.</p>
+        <p class="flow-step"><strong>TitanCore Holdings:</strong> TitanCore receives, reviews, approves, and prepares the parent-company package.</p>
+        <p class="flow-step"><strong>General Team Review:</strong> TitanCore sends the organized package upward for General review.</p>
+        <p class="flow-step"><strong>Mantle Review:</strong> Final decisions move through the Mantle of 7 and then back down as company actions.</p>
+      </div>
+    </section>
+
+    <div class="footer-space"></div>
+  </div>
+
+  <script>
+    function updateClock() {
+      const now = new Date();
+
+      const dateText = now.toLocaleDateString('en-US', {
+        weekday: 'short',
+        month: 'short',
+        day: 'numeric',
+        year: 'numeric'
+      });
+
+      const timeText = now.toLocaleTimeString('en-US', {
+        hour12: false,
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+      });
+
+      document.getElementById('currentDate').textContent = dateText;
+      document.getElementById('currentTime').textContent = timeText;
+    }
+
+    updateClock();
+    setInterval(updateClock, 1000);
+  </script>
+</body>
+</html>
