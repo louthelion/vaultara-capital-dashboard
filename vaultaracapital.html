@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vaultara Dashboard</title>
+  <title>Vaultara Capital Dashboard</title>
   <style>
     * {
       box-sizing: border-box;
@@ -133,19 +133,18 @@
       font-size: 0.98rem;
     }
 
-    .hero-actions,
-    .section-grid {
+    .section-grid,
+    .intake-grid {
       display: grid;
       gap: 16px;
     }
 
-    .hero-actions {
-      grid-template-columns: repeat(2, 1fr);
-      margin-top: 16px;
-    }
-
     .section-grid {
       grid-template-columns: repeat(3, 1fr);
+    }
+
+    .intake-grid {
+      grid-template-columns: repeat(4, 1fr);
     }
 
     .card {
@@ -287,7 +286,7 @@
 
     @media (max-width: 1100px) {
       .section-grid,
-      .hero-actions {
+      .intake-grid {
         grid-template-columns: repeat(2, 1fr);
       }
     }
@@ -298,7 +297,7 @@
       }
 
       .section-grid,
-      .hero-actions {
+      .intake-grid {
         grid-template-columns: 1fr;
       }
 
@@ -313,8 +312,8 @@
     <header class="topbar">
       <div class="topbar-inner">
         <div class="brand">
-          <h1>Vaultara Dashboard</h1>
-          <p>Vaultara Capital • Leadership • Departments • Workflow • Funding Company Dashboard</p>
+          <h1>Vaultara Capital Dashboard</h1>
+          <p>Vaultara Capital • Credit • Funding • Business Formation • Leadership • Departments • Workflow</p>
         </div>
 
         <div class="timebox">
@@ -328,11 +327,41 @@
       <div class="hero-card">
         <h2>Vaultara Capital</h2>
         <p>
-  This is the Vaultara company dashboard. From here, Vaultara can review company leadership,
-  departments, funding workflow, approvals, reporting, and internal company activity.
-  Live values stay blank until the real systems are connected.
-</p>
-   <div class="hero-actions">
+          This is the Vaultara company dashboard. The landing page feeds into this dashboard.
+          From here, Vaultara can process personal credit, business credit, business funding,
+          business formation help, internal workflow, and move approved work upward to TitanCore
+          and Central oversight.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Public Intake Connections</h2>
+      <p class="section-desc">These represent the landing page entries that should flow into this dashboard.</p>
+
+      <div class="intake-grid">
+        <div class="card">
+          <h3>Personal Credit Intake</h3>
+          <p>Public landing page personal credit form enters Vaultara workflow here.</p>
+          <button class="btn" onclick="openToolPanel('Personal Credit Intake','Landing page personal credit submissions enter here.', intakeTools)">Open Dashboard</button>
+        </div>
+
+        <div class="card">
+          <h3>Business Credit Intake</h3>
+          <p>Public landing page business credit form enters Vaultara workflow here.</p>
+          <button class="btn" onclick="openToolPanel('Business Credit Intake','Landing page business credit submissions enter here.', intakeTools)">Open Dashboard</button>
+        </div>
+
+        <div class="card">
+          <h3>Business Funding Intake</h3>
+          <p>Public landing page business funding form enters Vaultara workflow here.</p>
+          <button class="btn" onclick="openToolPanel('Business Funding Intake','Landing page business funding submissions enter here.', intakeTools)">Open Dashboard</button>
+        </div>
+
+        <div class="card">
+          <h3>Business Formation / Setup Help</h3>
+          <p>Public landing page business formation and organization help enters Vaultara workflow here.</p>
+          <button class="btn" onclick="openToolPanel('Business Formation / Setup Help','Landing page business formation and professional setup submissions enter here.', intakeTools)">Open Dashboard</button>
         </div>
       </div>
     </section>
@@ -356,13 +385,13 @@
 
         <div class="card">
           <h3>Vaultara Workflow</h3>
-          <p>Department completion, company sign stage, correction return, and send-to-TitanCore flow.</p>
+          <p>Credit review, funding review, business setup review, company sign stage, correction return, and send-to-TitanCore flow.</p>
           <button class="btn" onclick="openPanel('Vaultara Workflow','Open a workflow section first.', vaultaraWorkflowSections, vaultaraWorkflowStatus)">Open Dashboard</button>
         </div>
       </div>
     </section>
 
-    <div class="footer">Vaultara Dashboard</div>
+    <div class="footer">Vaultara Capital Dashboard</div>
   </div>
 
   <div class="overlay" id="overlay">
@@ -386,6 +415,13 @@
   </div>
 
   <script>
+    const intakeTools = [
+      ["New Leads", "New landing page submissions queue"],
+      ["Review", "Initial review and assignment"],
+      ["Routing", "Route to the correct department"],
+      ["Status", "Track current intake status"]
+    ];
+
     const vaultaraLeadershipRoles = [
       ["Manager", "Vaultara Manager dashboard"],
       ["Assistant Manager", "Vaultara Assistant Manager dashboard"],
@@ -393,8 +429,9 @@
     ];
 
     const vaultaraDepartments = [
-      ["Funding Department", "Open this department first"],
-      ["Credit Department", "Open this department first"],
+      ["Personal Credit Department", "Open this department first"],
+      ["Business Credit Department", "Open this department first"],
+      ["Business Funding Department", "Open this department first"],
       ["Business Formation Department", "Open this department first"],
       ["Contact Department", "Open this department first"],
       ["Contract Department", "Open this department first"],
@@ -403,7 +440,10 @@
 
     const vaultaraWorkflowSections = [
       ["Department Intake", "Completed work received from departments"],
-      ["Department Approval Check", "Manager + Assistant Manager review stage"],
+      ["Personal Credit Review", "Personal credit review and recommendation stage"],
+      ["Business Credit Review", "Business credit review and recommendation stage"],
+      ["Business Funding Review", "Business funding review and package stage"],
+      ["Business Setup Review", "Business formation and organization help stage"],
       ["Company Sign Stage", "Manager + Assistant Manager + Administrator stage"],
       ["Correction Return", "Returned items sent back for fixes"],
       ["Send to TitanCore", "Forward completed work to TitanCore"],
@@ -457,7 +497,7 @@
           btn.onclick = function() {
             openToolPanel(
               item[0] + " Dashboard",
-              item[0] + " dashboard inside Vaultara.",
+              item[0] + " dashboard inside Vaultara Capital.",
               [
                 ["Email", "Inbox and communications"],
                 ["Reports", "Reports and review"],
